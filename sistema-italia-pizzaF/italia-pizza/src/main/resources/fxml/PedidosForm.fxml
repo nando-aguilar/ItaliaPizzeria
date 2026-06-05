@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #ffffff;"
+            xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.italia.pizza.controllers.PedidosFormController">
+    <center>
+        <VBox spacing="15" style="-fx-padding: 30;">
+
+            <Label fx:id="lblTitulo" text="Registrar Pedido"
+                   style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+            <GridPane hgap="20" vgap="12">
+                <padding><Insets top="10" left="10" right="10" bottom="10"/></padding>
+
+                <Label text="Cliente *"    GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <ComboBox fx:id="comboCliente" prefWidth="280"
+                          GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+                <Label text="Empleado *"   GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <ComboBox fx:id="comboEmpleado" prefWidth="280"
+                          GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                <columnConstraints>
+                    <ColumnConstraints minWidth="100"/>
+                    <ColumnConstraints minWidth="280"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="40"/>
+                    <RowConstraints minHeight="40"/>
+                </rowConstraints>
+            </GridPane>
+
+            <!-- AGREGAR PRODUCTOS -->
+            <Label text="Productos del pedido"
+                   style="-fx-font-size: 15px; -fx-font-weight: bold;"/>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <ComboBox fx:id="comboProducto" prefWidth="250"
+                          promptText="Selecciona producto"/>
+                <TextField fx:id="txtCantidad" prefWidth="80"
+                           promptText="Cant."/>
+                <Button text="Agregar" onAction="#agregarProducto"
+                        style="-fx-background-color: #007bff; -fx-text-fill: white;
+                               -fx-padding: 6 16; -fx-background-radius: 5;"/>
+                <Button text="Quitar" onAction="#quitarProducto"
+                        style="-fx-background-color: #dc3545; -fx-text-fill: white;
+                               -fx-padding: 6 16; -fx-background-radius: 5;"/>
+            </HBox>
+
+            <TableView fx:id="tablaDetalles" prefHeight="200">
+                <columns>
+                    <TableColumn text="Producto"    prefWidth="200"/>
+                    <TableColumn text="Cantidad"    prefWidth="80"/>
+                    <TableColumn text="Precio unit." prefWidth="100"/>
+                </columns>
+            </TableView>
+
+            <Label fx:id="lblTotal" text="Total: $0.00"
+                   style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+
+            <HBox alignment="CENTER_RIGHT" spacing="20">
+                <Button text="Cancelar" onAction="#cancelar"
+                        style="-fx-background-color: #dc3545; -fx-text-fill: white;
+                               -fx-padding: 8 20; -fx-background-radius: 5;"/>
+                <Button text="Guardar" onAction="#guardar"
+                        style="-fx-background-color: #28a745; -fx-text-fill: white;
+                               -fx-padding: 8 20; -fx-background-radius: 5;"/>
+            </HBox>
+
+        </VBox>
+    </center>
+</BorderPane>
